@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hospital Cruz Azul | Bienvenida</title>
+
+        <!-- Seteo de favicon -->
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/256/5405/5405376.png">
+
+        <link rel="stylesheet" href="./vistaBienvenida.css">
+    </head>
+
+    <body>
+        <header>
+            <img id="icono-principal" src="https://cdn-icons-png.flaticon.com/256/5405/5405376.png" alt="Logo Hospital">
+        </header>
+        
+        <main>
+            <div id="contenedor-img-bienvenida">
+                <img id="imagen-bienvenida" src="https://statics.somosuruguay.com.uy/2025/07/686403c263c1e.png" alt="Imagen Bienvenida">
+            </div>
+            <form id="formulario-login">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre">
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" id="apellido">
+                <label for="obra-social">Obra Social:</label>
+                
+                <select name="lista-obra-social" id="lista-obra-social">
+                    <option value="" disabled selected>Selecciona una opción...</option>   
+                    <option value="galeno">Galeno</option>
+                    <option value="osde">OSDE</option>
+                    <option value="nada">otra/ninguna</option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+        </main>
+        
+        <footer>
+            <p>Hecho por: Agustin Marchetta y Tadeo Ibaceta</p>
+        </footer>
+    </body>
+</html>

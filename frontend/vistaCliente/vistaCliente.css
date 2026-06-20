@@ -1,0 +1,79 @@
+/* --- Estilos generales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    background-color: #4b4b96;
+}
+
+header{
+    background-color: #292952;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: #757a7e;
+}
+
+#icono-principal{
+    width: 55px;
+    height: 55px;
+}
+
+#barra-navegadora{
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    margin-left: 15px;
+    margin-right: 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+a:hover{
+    color: #000000;
+}
+
+.h2-separador{
+    display: flex;
+    justify-content: center;
+    background-color: #292952;
+    color: #a0a6ac;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.img-doctor{
+    width: 200px;
+    height: 250px;
+}
+
+.lista-pediatras,
+.lista-traumatologos,
+.lista-dermatologos{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.li-pediatras,
+.li-traumatologos,
+.li-dermatologos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #757a7e;
+}
