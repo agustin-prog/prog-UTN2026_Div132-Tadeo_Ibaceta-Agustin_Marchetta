@@ -1,0 +1,29 @@
+{
+  "name": "prog-utn2026_div132-tadeo_ibaceta-agustin_marchetta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tadeo-Ibaceta/prog-UTN2026_Div132-Tadeo_Ibaceta-Agustin_Marchetta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Tadeo-Ibaceta/prog-UTN2026_Div132-Tadeo_Ibaceta-Agustin_Marchetta/issues"
+  },
+  "homepage": "https://github.com/Tadeo-Ibaceta/prog-UTN2026_Div132-Tadeo_Ibaceta-Agustin_Marchetta#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.5",
+    "nodemon": "^3.1.14"
+  }
+}
