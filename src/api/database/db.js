@@ -2,7 +2,7 @@
 import mysql2 from "mysql2/promise";
 
 // Importamos la informacion de la conexion a la BBDD
-import environments from "../config/environments.js";
+import environments from "../config/environment.js";
 
 // Extraemos solo el objeto database
 const { database } = environments;
