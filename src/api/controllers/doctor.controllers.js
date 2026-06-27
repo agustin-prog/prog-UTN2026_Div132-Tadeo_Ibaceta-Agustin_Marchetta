@@ -25,6 +25,8 @@ export const getAllDoctors = async (req, res) => {
         });
 
     } catch (error) {
+        console.log("Error obteniendo los productos: ", error);
+
         // Devolvemos un codigo de estado 500 por errores del servidor
         res.status(500).json({
             message: "Error interno al obtener doctores"
@@ -52,6 +54,8 @@ export const getDoctorById = async (req, res) => {
         });
 
     } catch (error) {
+        console.log(`Error obteniendo producto con id ${req.id}`, error.message);
+
         // Devolvemos un error 500
         res.status(500).json({
             message: `Error interno al obtener un doctor con id ${req.id}`
@@ -77,7 +81,7 @@ export const createDoctor = async (req, res) => {
             });
         }
 
-        const [rows] = await DoctorModels.insertNewDoctor(nombre, apellido, matricula, image, especialidad);
+        [rows] = await DoctorModels.insertNewDoctor(nombre, apellido, matricula, image, especialidad);
     
         // En lugar de 200, devolvemos un 201 "Created"
         res.status(201).json({
@@ -86,6 +90,8 @@ export const createDoctor = async (req, res) => {
         });
 
     } catch (error) {
+        console.log(error);
+
         // Devolvemos un codigo de estado 500
         res.status(500).json({
             message: "Error interno del servidor"
@@ -131,6 +137,8 @@ export const modifyDoctor = async (req, res) => {
 
 
     } catch (error) {
+        console.log(error);
+
         // Devolvemos un codigo de estado 500
         res.status(500).json({
             message: "Error interno del servidor"
@@ -159,6 +167,8 @@ export const removeDoctor = async (req, res) => {
         });
 
     } catch (error) {
+        console.log(`Error en peticion DELETE`, error);
+        
         // Enviamos una respuesta 500 al cliente
         res.status(500).json({
             message : "Error interno del servidor"

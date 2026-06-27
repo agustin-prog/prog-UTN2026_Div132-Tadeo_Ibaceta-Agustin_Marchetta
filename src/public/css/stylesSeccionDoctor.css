@@ -1,0 +1,55 @@
+h2 {
+    padding-left: 40px;
+    padding-top: 20px;   
+}
+
+#contenedor-doctores {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;   
+    gap: 20px;
+}
+
+.card-doctor {
+    display: flex;
+    justify-content: space-between;
+    /* padding: 20px; */
+    border-radius: 18px;
+    background-color: var(--urban-fog);
+}
+
+.contenedor-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    font-family: var(--fuente-cuerpo);
+}
+
+.contenedor-info img {
+    border-radius: 8px;
+}
+
+.contenedor-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 28px;
+    background-color: var(--bg-btn);
+}
+
+.btn:hover{
+    background-color: var(--bg-btn-hover);
+}
+
+.btn-gestionar-horarios {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    border: 1.250px solid black;
+}
