@@ -8,27 +8,27 @@ import connection from "../database/db.js";
 // Traer todos los doctores
 const selectAllDoctors = () => {
     // Se crea una variable con la consulta sql para hacerla mas legible visualmente
-    const sql = "SELECT id, nombre, apellido, matricula, image, especialidad FROM doctors";
+    const sql = "SELECT id_doctor, nombre, apellido, matricula, image, id_especialidad FROM doctores";
     return connection.query(sql);
 }
 
 
 // Traer doctor por id
 const selectDoctorById = (id) => {
-    const sql = "SELECT id,nombre, apellido, matricula, image, especialidad FROM doctors where doctors.id = ?";
+    const sql = "SELECT id_doctor,nombre, apellido, matricula, image, id_especialidad FROM doctores where doctores.id_doctor = ?";
     return connection.query(sql, [id]);
 }
 
 // Traer doctor por matricula
 const selectDoctorByMatricula = (matricula) =>{
-    const sql = "SELECT id,nombre, apellido, matricula, image, especialidad FROM doctors where doctors.matricula = ?";
+    const sql = "SELECT id_doctor,nombre, apellido, matricula, image, id_especialidad FROM doctores where doctores.matricula = ?";
     return connection.query(sql, [matricula]);
 }
 
 
 // Crear Doctor
 const insertNewDoctor = (nombre, apellido, matricula, image, especialidad) => {
-    const sql = "INSERT INTO doctors (nombre, apellido, matricula, image, especialidad) VALUES (?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO doctores (nombre, apellido, matricula, image, id_especialidad) VALUES (?, ?, ?, ?, ?)";
     
     // Se devulve la respuesta en un rows para devolver info util como el id asignado al nuevo doctor
     return connection.query(sql, [nombre, apellido, matricula, image, especialidad]);
@@ -37,7 +37,7 @@ const insertNewDoctor = (nombre, apellido, matricula, image, especialidad) => {
 
 // Modificar Doctor
 const updateDoctor = (nombre, apellido, matricula, image, especialidad, id) => {
-    const sql = "UPDATE doctors SET nombre = ?, apellido = ?, matricula = ?, image = ?, especialidad = ? WHERE id = ?";
+    const sql = "UPDATE doctores SET nombre = ?, apellido = ?, matricula = ?, image = ?, id_especialidad = ? WHERE id_doctor = ?";
     
     // Guardamos el resultado de la conexion que nos bridara info para la optimziacion
     return connection.query(sql, [nombre, apellido, matricula, image, especialidad, id]);
@@ -46,7 +46,7 @@ const updateDoctor = (nombre, apellido, matricula, image, especialidad, id) => {
 
 // Eliminar Doctor
 const deleteDoctor = (id) => {
-    const sql = "DELETE FROM doctors WHERE id = ?";
+    const sql = "DELETE FROM doctores WHERE id_doctor = ?";
 
     return connection.query(sql, [id]);
 }

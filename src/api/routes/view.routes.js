@@ -4,13 +4,13 @@
 
 import { Router } from "express";
 import { join, __dirname } from "../utils/index.js";
-import { createDoctorView, deleteDoctorView, getDoctorView, indexView, updateDoctorView } from "../controllers/view.controllers.js";
+import { doctorView, getDoctorView, createDoctorView, updateDoctorView, deleteDoctorView  } from "../controllers/viewDoctor.controllers.js";
 
 const router = Router();
 
 ////////////////////
 // Vista principal
-router.get("/index", indexView);
+router.get("/indexDoctores", doctorView); // como se llamaria
 
 
 ////////////////////

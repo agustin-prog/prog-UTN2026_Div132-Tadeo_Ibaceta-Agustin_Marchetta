@@ -1,7 +1,6 @@
-/*================================
-    Controladores de vistas
-================================*/
-
+/*===================================
+    Controladores de vista doctores
+=====================================*/
 import DoctorModels from "../models/doctor.models.js";
 import { join, __dirname } from "../utils/index.js";
 
@@ -12,8 +11,8 @@ export const doctorView = async (req, res) => {
 
         const [rows] = await DoctorModels.selectAllDoctors();
 
-        res.render("indexDoctor", {
-            title: "Dashboard",
+        res.render("indexDoctor", { // aca va el ejs a q se mostraria
+            title: "Dashboard doctores",
             about: "Nuestros doctores",
             doctorsArray: rows
         });
@@ -33,9 +32,9 @@ export const doctorView = async (req, res) => {
 ////////////////////
 // Vista obtener doctor
 export const getDoctorView = (req, res) => {
-    res.render("getDoctor", {
-        title: "Consultar",
-        about: "Consultar doctor por id: ",
+    res.render("indexDoctor", {
+        title: "Consultar doctores",
+        about: "Consultar doctor por id: "
     });
 }
 
@@ -44,8 +43,8 @@ export const getDoctorView = (req, res) => {
 ////////////////////
 // Vista crear doctor
 export const createDoctorView = (req, res) => {
-    res.render("postDoctor", {
-        title: "Crear",
+    res.render("post", {
+        title: "Crear doctores",
         about: "Crear doctor"
     });
 }
@@ -55,8 +54,8 @@ export const createDoctorView = (req, res) => {
 ////////////////////
 // Vista actualizar doctor
 export const updateDoctorView = (req, res) => {
-    res.render("putDoctor", {
-        title: "Modificar",
+    res.render("put", {
+        title: "Modificar doctores",
         about: "Consultar doctor por id: "
     });
 }
@@ -66,8 +65,8 @@ export const updateDoctorView = (req, res) => {
 ////////////////////
 // Vista eliminar producto
 export const deleteDoctorView = (req, res) => {
-    res.render("deleteDoctor", {
-        title: "Eliminar",
+    res.render("delete", {
+        title: "Eliminar doctores",
         about: "Consultar doctor por id: "
     });
 }

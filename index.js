@@ -3,7 +3,7 @@
 import express from "express";
 const app = express();
 import environments from "./src/api/config/environment.js";
-import { doctorRoutes, viewRoutes } from "./src/api/routes/index.js";
+import { doctorRoutes, viewDoctor, viewRoutes } from "./src/api/routes/index.js";
 import cors from "cors";
 import { loggerURL } from "./src/api/middlewares/middlewares.js";
 import { join, __dirname } from "./src/api/utils/index.js"; // Importamos la configuracion para trabajar con rutas de /utils
@@ -41,7 +41,8 @@ app.get("/", (req, res) => {
 //////////
 // Rutas
 app.use("/api/doctors", doctorRoutes); // Rutas de doctores
-app.use("/dashboard", viewRoutes) // Rutas de vista
+//app.use("/dashboard", viewRoutes) // Rutas de vista
+app.use("/admin", viewDoctor);
 
 // app.use("/api/users", userRoutes);
 // app.use("/login", authRoutes);
