@@ -36,9 +36,20 @@
     --separador-color-celeste: #5b86b6;
     --separador-color-gris: #b3b3b3;
 
-    --fuente-cuerpo: 'Open-Sans', sans-serif;
+    --btn-eliminar-bg: #f8d7da;
+    --btn-eliminar-color: #58151c;
+    --btn-eliminar-border: #f1aeb5;
+    --btn-eliminar-hover: #f8c3c7;
+    --btn-guardar-bg: #d1e7dd;
+    --btn-guardar-color: #0a3622;
+    --btn-guardar-border: #a3cfbb;
+    --btn-guardar-hover: #c3e4d5;
 
-    --size-fuente: 
+    --fuente-cuerpo: 'Open-Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 main {

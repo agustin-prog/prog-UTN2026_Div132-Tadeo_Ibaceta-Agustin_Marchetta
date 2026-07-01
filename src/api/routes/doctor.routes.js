@@ -20,7 +20,7 @@ router.post("/", validateDoctor, createDoctor);
 
 
 // UPDATE doctor
-router.put("/", modifyDoctor);
+router.put("/:id", validateId, modifyDoctor);
 
 
 // DELETE doctor

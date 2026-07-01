@@ -1,8 +1,8 @@
 /*================================
     Controladores de vistas
 ================================*/
-
-import DoctorModels from "../models/doctor.models.js";
+import doctorModels from "../models/doctor.models.js";
+import especialidadModels from "../models/especialidad.models.js";
 import { join, __dirname } from "../utils/index.js";
 
 ////////////////////
@@ -10,12 +10,17 @@ import { join, __dirname } from "../utils/index.js";
 export const doctorView = async (req, res) => {
     try {
 
-        const [rows] = await DoctorModels.selectAllDoctors();
+        const [doctores] = await doctorModels.selectAllDoctors();
+        //console.log('Doctores:', doctores);
 
-        res.render("indexDoctor", {
-            title: "Dashboard",
-            about: "Nuestros doctores",
-            doctorsArray: rows
+        const [especialidades] = await especialidadModels.selectAllEspecialidades();
+        //console.log('Especialidades:', especialidades);
+        
+        res.render("adminDoctor", {     //este va
+            title: "Admin doctor",
+            about: "Doctores",
+            doctorsArray: doctores,
+            especialidadesArray: especialidades
         });
 
     } catch (error) {

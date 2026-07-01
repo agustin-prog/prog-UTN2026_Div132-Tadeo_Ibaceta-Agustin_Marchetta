@@ -3,6 +3,7 @@
 ================================*/
 
 import DoctorModels from "../models/doctor.models.js";
+import especialidadModels from "../models/especialidad.models.js";
 
 // Get all doctors
 export const getAllDoctors = async (req, res) => {
@@ -10,7 +11,7 @@ export const getAllDoctors = async (req, res) => {
     // Manejo de errores con try...catch
     try {
 
-        const [rows] = await DoctorModels.selectAllDoctor();
+        const [rows] = await DoctorModels.selectAllDoctors();
 
         // En caso de no haber doctores, devolvemos un 404
         if (rows.length === 0) {
@@ -72,8 +73,8 @@ export const createDoctor = async (req, res) => {
         // Recogemos los datos limpios del body
         const {nombre, apellido, matricula, image, especialidad} = req.body;
 
-        const [rows] = await DoctorModels.selectDoctorByMatricula(matricula);
-        if(rows.length > 0){ 
+        const [rowsMatricula] = await DoctorModels.selectDoctorByMatricula(matricula);
+        if(rowsMatricula.length > 0){ 
             //422 Unprocessable Entity: trata la matricula repetida como un error de validación en el cuerpo de la solicitud.
             
             return res.status(422).json({
@@ -81,13 +82,23 @@ export const createDoctor = async (req, res) => {
             });
         }
 
-        [rows] = await DoctorModels.insertNewDoctor(nombre, apellido, matricula, image, especialidad);
-    
+        const [rowsEspecialidades] = await especialidadModels.selectAllEspecialidades();
+        const especialidadEncontrada = rowsEspecialidades.find(esp => esp.id_especialidad === Number(especialidad));
+
+        if(!especialidadEncontrada){
+            return res.status(422).json({
+            message: "Especialidad invalida, esa especialidad no existe"
+            });
+        }
+
+        const [rowsInsert] = await DoctorModels.insertNewDoctor(nombre, apellido, matricula, image, especialidad);
+        
         // En lugar de 200, devolvemos un 201 "Created"
         res.status(201).json({
             message: "Doctor creado con exito",
-            productId: rows.insertId
+            productId: rowsInsert.insertId
         });
+
 
     } catch (error) {
         console.log(error);
@@ -104,7 +115,7 @@ export const createDoctor = async (req, res) => {
 export const modifyDoctor = async (req, res) => {
     // Manejo de errores con try...catch
     try {
-        const {nombre, apellido, matricula, image, especialidad} = req.body;
+        const {nombre, apellido, matricula, image, especialidad, disponible} = req.body;
 
         // Validamos que vengan los campos necesarios antes de tocar la BBDD
         if (!nombre || !apellido || !especialidad || !matricula) {
@@ -113,16 +124,23 @@ export const modifyDoctor = async (req, res) => {
             });
         }
     
-        const [rows] = await DoctorModels.selectDoctorByMatricula(matricula);
-        if(rows.length > 0){ 
-            //422 Unprocessable Entity: trata la matricula repetida como un error de validación en el cuerpo de la solicitud.
-            
+        const [rowsMatricula] = await DoctorModels.selectDoctorByMatricula(matricula);
+        if(rowsMatricula.length > 0 && rowsMatricula[0].id_doctor !== req.id){
             return res.status(422).json({
                 message: "Matricula invalida, ya fue asignada anteriormente"
+            }); 
+        }
+
+        const [rowsEspecialidades] = await especialidadModels.selectAllEspecialidades();
+        const especialidadEncontrada = rowsEspecialidades.find(esp => esp.id_especialidad === Number(especialidad));
+
+        if(!especialidadEncontrada){
+            return res.status(422).json({
+            message: "Especialidad invalida, esa especialidad no existe"
             });
         }
 
-        const [result] = await DoctorModels.updateDoctor(nombre, apellido, matricula, image, especialidad, id);
+        const [result] = await DoctorModels.updateDoctor(nombre, apellido, matricula, image, especialidad, disponible, req.id);
         
         // Verificamos si realmente se actualizo algo, guardando la respuesta de la BBDD
         if (result.affectedRows === 0) {
@@ -154,7 +172,7 @@ export const removeDoctor = async (req, res) => {
 
         // Enviamos un error 404 si el doctor con ese id no existe
         const [rows]= await DoctorModels.selectDoctorById(req.id);
-        if(rows !== 1){
+        if(rows.length === 0){
             return res.status(404).json({
                 message: `Doctor con id ${req.id} no encontrado`
             });

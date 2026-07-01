@@ -14,7 +14,6 @@ h2 {
 .card-doctor {
     display: flex;
     justify-content: space-between;
-    /* padding: 20px; */
     border-radius: 18px;
     background-color: var(--urban-fog);
 }

@@ -30,7 +30,6 @@ const validateId = (req, res, next) => {
 
 
 // Middleware de ruta para validar los campos de un formulario POST
-const EspecialidadesValidas = ["pediatria", "traumatologia", "dermatologia"];
 const validateDoctor = (req, res, next) => {
 
     // Recogemos los datos del body
@@ -52,13 +51,9 @@ const validateDoctor = (req, res, next) => {
         errores.push("El apellido debe tener al menos 2 caracteres");
     }
 
-    if (typeof matricula !== "number" || matricula >= 1000 && matricula <= 9999) { // Valida tipo y rango del numero de matricula
+    if (matricula < 1000 && matricula > 9999) { // Valida rango del numero de matricula
         errores.push("El numero de matricula no es válido");
-    }
-
-    if(!EspecialidadesValidas.includes(especialidad)) { // Valida la especialidad
-        errores.push("Especialidad invalida");
-    };
+    } 
 
     // Detectamos si existe algun error en la lista y lo devolvemos en un 400
     if (errores.length > 0) {

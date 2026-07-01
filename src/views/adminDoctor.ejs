@@ -1,0 +1,106 @@
+<%- include("partials/head.ejs") %>
+<main>
+
+    <%- include("partials/nav.ejs") %>
+    <section class="seccion-main">
+        
+        <!-- ─────────────────────────────────────────────
+        PANEL DE ADMIN
+        Se muestra cuando el token es válido.
+        Oculto por defecto, se muestra tras el login.
+        ───────────────────────────────────────────── -->
+        <section id="panel-admin" class="oculto">
+        
+            <!-- Formulario para agregar o editar un plato -->
+            <div class="admin-card">
+                <h2 id="form-titulo">Control <%= about %></h2>
+                
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="input-nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" id="input-apellido">
+                </div>
+                
+                <div class="form-group">
+                    <label>Imagen (URL)</label>
+                    <input type="text" id="input-imagen" placeholder="https://...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Matricula</label>
+                    <input type="number" id="input-matricula" placeholder="Ej: 132254345">
+                </div>
+
+                <div class="form-group form-select">
+                    <label>Especialidad</label>
+                    <select name="especialidades" id="especialidades">
+                        <% let listaEspecialidad = []; %>
+                        <% especialidadesArray.forEach(especialidad => { %>
+                            <% if (!listaEspecialidad.includes(especialidad.nombre)) { %>
+                                <% listaEspecialidad.push(especialidad.nombre); %>
+                                <option class="option-espc" value="<%= especialidad.id_especialidad %>"><%= especialidad.nombre %></option>
+                            <% } %>
+                        <% }) %>
+                    </select>
+                </div>
+                
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" id="input-disponible" checked>
+                        Disponible
+                    </label>
+                </div>
+                
+                <p id="form-error" class="error-msg invisible"></p>
+                <p id="form-exito" class="exito-msg invisible"></p>
+                
+                <div class="form-btns">
+                    <button id="btn-guardar">Guardar plato</button>
+                    <button id="btn-cancelar" class="oculto">Cancelar</button>
+                </div>
+            </div>
+            
+            <!-- Lista de doctores existentes -->
+            <div class="admin-card">
+                <h2><%= about %> Existentes</h2>
+
+                <div class="buscador">
+                    <form id="getObject-form">
+                        <label for="idProd">Id del doctor</label>
+                        <input type="number" name="idProd" id="idProd">
+
+                        <input type="submit" value="Consultar producto">
+                    </form> 
+                </div>
+                <div id="lista-doctores">
+                    <!-- Los doctores se cargan dinámicamente -->
+
+                        <% doctorsArray.forEach(doctor => { %>
+                            
+                            <div class="card-doctor">
+                                <div class="card-info">
+                                    <h3>Nombre: <%= doctor.nombre %> <%= doctor.apellido %></h3>
+                                    <p>Id_doctor: <%= doctor.id_doctor %></p>
+                                    <p>Matricula: <%= doctor.matricula %></p>
+                                    <p>Especialidad <%= doctor.id_especialidad %></p>
+                                </div>
+                                <div class="card-btn">
+                                    <a class="btn-doc" href="./adminHorarios">Ver horarios</a>
+                                    <button class="btn-doc btn-modificar" data-id="<%= doctor.id_doctor %>">Modificar</button>
+                                    <button class="btn-doc btn-eliminar" data-id="<%= doctor.id_doctor %>">Eliminar</button>
+                                </div>
+                            </div>
+                        <% }) %>
+                </div>
+            </div>
+                
+        </section>
+    </section>
+</main>
+
+<script src="/js/doctor.js"></script>
+<%- include("partials/footer.ejs") %>

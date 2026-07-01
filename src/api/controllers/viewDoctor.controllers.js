@@ -10,10 +10,10 @@ export const doctorView = async (req, res) => {
     try {
 
         const [rows] = await DoctorModels.selectAllDoctors();
-
+        
         res.render("indexDoctor", { // aca va el ejs a q se mostraria
             title: "Dashboard doctores",
-            about: "Nuestros doctores",
+            about: "Doctores",
             doctorsArray: rows
         });
 

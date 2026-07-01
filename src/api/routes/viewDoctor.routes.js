@@ -9,7 +9,7 @@ const router = Router();
 
 ////////////////////
 // Vista principal
-router.get("/indexDoctores", doctorView);
+router.get("/index", doctorView);
 
 
 ////////////////////
