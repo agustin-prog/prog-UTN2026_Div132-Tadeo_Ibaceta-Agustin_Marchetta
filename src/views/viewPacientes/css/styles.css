@@ -1,0 +1,350 @@
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --msg-error-bg: #f8d7da;
+    --msg-error-color: #58151c;
+    --msg-error-border: #f1aeb5;
+    --msg-exito-bg: #d1e7dd;
+    --msg-exito-color: #0a3622;
+    --msg-exito-border: #a3cfbb;
+
+    --border-azul: #1b3554;
+
+    --charcoal-noir: #2b2b2b;
+    --ironclad-grey: #565656;
+    --urban-fog: #848484;
+    --moonlit-silver: #b3b3b3;
+    --cloud-veil: #e0e0e0;
+
+    --bg-btn: #12f8f89d;
+    --bg-btn-hover: #0cb8b89d ;
+
+    --bg-img: #fff;
+
+    --txt-blanco: #fff;
+    --txt-hover: #000;
+
+    --separador-color-celeste: #5b86b6;
+    --separador-color-gris: #b3b3b3;
+
+    --fuente-cuerpo: 'Open-Sans', sans-serif;
+
+}
+
+body{
+    font-family: var(--fuente-cuerpo);
+}
+
+main {
+    display: flex;
+    flex-direction: row; 
+    min-height: 100vh;
+    background-color: var(--charcoal-noir); 
+}
+
+.separador {
+    width: 100%;
+    margin: 10px 0px;
+    border-bottom: solid var(--urban-fog) 5px;
+    border-radius: 8px;
+}
+
+.separador-medio {
+    width: 90%;
+    border-bottom-width: 3px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.seccion-main{
+    flex: 1;               
+    margin-left: 250px;         
+    width: 100%;
+    color: var(--txt-blanco);
+}
+
+#nav-crud{
+    position: sticky;
+    top: 0;
+    left: 250px;
+    width: 100%;
+    height: 60px;
+    background-color: var(--urban-fog);
+    border-bottom: 8px;
+}
+
+.enlaces {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.enlace a {
+    width: 100%;
+    height: 100%;
+    color: var(--txt-blanco);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.enlace:hover a {
+    color: var(--txt-hover);
+    border-bottom: 1px solid var(--charcoal-noir);
+}
+
+/* Estilos de los mensajes de las acciones */
+.mensaje {
+    border-radius: 6px;
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.mensaje-error {
+    color: var(--msg-error-color);
+    background-color: var(--msg-error-bg);
+    border: 1px solid var(--msg-error-border);
+}
+
+.mensaje-exito {
+    color: var(--msg-exito-color);
+    background-color: var(--msg-exito-bg);
+    border: 1px solid var(--msg-exito-border);
+}
+
+
+/* ------------------------
+    Styles del Nav Vertical
+   ------------------------*/
+
+/* ------------------------
+    Apartado del logo y
+    nombre del hospital
+   ------------------------*/
+.contenedor-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--ironclad-grey);
+    color: var(--txt-blanco);
+}
+
+#primer-contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 10px;
+}
+
+#primer-contenedor img {
+    width: 39px;
+    height: 39px;
+    background-color: var(--bg-img);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+#primer-contenedor h1 {
+    font-size:x-large;
+}
+
+/* ------------------------
+    Apartado de los items 
+    del nav
+   ------------------------*/
+
+#segundo-contenedor {
+    width: 250px;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#segundo-contenedor ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+}
+
+#segundo-contenedor li {
+    width: 100%;
+    cursor:pointer;
+}
+
+.nav-boton {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 5px;
+}
+
+.nav-boton img {
+    width: 27px;
+    height: 27px;
+    background-color: var(--bg-img);
+    border-radius: 8px;
+}
+
+.nav-boton a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--txt-blanco);
+    text-decoration: none;
+}
+
+.nav-boton:hover {
+    background-color: var(--urban-fog);
+}
+
+#seleccionado {
+    background-color: var(--charcoal-noir);
+    border-left: 8px solid var(--border-azul);
+}
+
+#seleccionado a {
+    color: var(--color-negro-principal  );
+}
+
+#seleccionado:hover {
+    background-color: var(--urban-fog);
+}
+
+/* ------------------------
+    Apartado de la cuenta 
+    en session que se esta 
+    usando en el momento
+   ------------------------*/
+
+#tercer-contenedor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#tercer-contenedor img {
+    width: 44px;
+    height: 44px;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 10px 30px;
+}
+
+#nombre {
+    color: var(--txt-blanco);
+    font-size: 18px;
+}
+
+#rol {
+    color: var(--moonlit-silver);
+    font-size: 14px;
+}
+
+
+
+/* --- Estilos del contenido --- */
+
+header{
+    background-color: var(--charcoal-noir);
+}
+
+footer {
+    display: flex;
+    justify-content: right;
+    color: var(--txt-blanco);
+    background-color: var(--charcoal-noir);
+}
+
+.contenido{
+    flex:1;
+}
+
+#icono-principal{
+    width: 55px;
+    height: 55px;
+}
+
+.h2-separador{
+    display: flex;
+    justify-content: center;
+    background-color: var(--border-azul);
+    color: var(--moonlit-silver);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.img-doctor{
+    width: 200px;
+    height: 250px;
+}
+
+.lista-pediatras,
+.lista-traumatologos,
+.lista-dermatologos{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.li-pediatras,
+.li-traumatologos,
+.li-dermatologos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    background-color: var(--ironclad-grey);
+    color: var(--txt-blanco);
+}
+
+#pediatria,
+#traumatologia,
+#dermatologia{
+    margin-left: 250px;
+}
+
+.btn-pedirTurno{
+    margin-top:auto;
+    width:100%;
+    padding:10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: var(--border-azul);
+    color: var(--txt-blanco);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn-pedirTurno:hover{
+    background:var(--bg-btn-hover);
+}

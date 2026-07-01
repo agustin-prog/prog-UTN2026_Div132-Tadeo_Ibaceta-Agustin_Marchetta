@@ -64,6 +64,30 @@ export const getDoctorById = async (req, res) => {
     }
 }
 
+//GET doctor by especialidad
+export const getDoctorBySpeciality = async (req, res) => {
+    try{
+        const[rows] = await DoctorModels.selectDoctorByEspecialidad(req.especialidad);
+        
+        // Devolveremos un codigo de estado 404 (Not Found) si no existe ningun doctor de esa especialidad
+        if (rows.length === 0) {
+            return res.status(404).json({
+                message: `No se encontró ningun doctor especializado en ${req.especialidad}`
+            });
+        }
+    
+        res.status(200).json({
+            payload: rows
+        });
+
+    } catch(error){
+        // Devolvemos un error 500
+        res.status(500).json({
+            message: `Error interno al obtener un doctor especializado en ${req.especialidad}`
+        });
+    }
+}
+
 
 // Create new doctor
 export const createDoctor = async (req, res) => {

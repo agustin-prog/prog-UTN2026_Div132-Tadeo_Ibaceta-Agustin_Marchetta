@@ -25,6 +25,12 @@ const selectDoctorByMatricula = (matricula) =>{
     return connection.query(sql, [matricula]);
 }
 
+// Traer doctor por especialidad
+const selectDoctorByEspecialidad = (especialidad) => {
+    const sql = "SELECT id_doctor,nombre, apellido, matricula, image, id_especialidad FROM doctores where doctores.especialidad = ?";
+    return connection.query(sql, [especialidad]);
+}
+
 
 // Crear Doctor
 const insertNewDoctor = (nombre, apellido, matricula, image, especialidad, disponible) => {
@@ -56,6 +62,7 @@ export default {
     selectAllDoctors,
     selectDoctorById,
     selectDoctorByMatricula,
+    selectDoctorByEspecialidad,
     insertNewDoctor,
     updateDoctor,
     deleteDoctor

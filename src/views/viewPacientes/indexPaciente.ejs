@@ -1,0 +1,65 @@
+<%- include("partialsPacientes/head.ejs") %>
+
+    <main>
+        <%- include("partialsPacientes/nav.ejs") %>
+        <section id="pediatria">
+            <h2 class="h2-separador">Pediatría</h2>
+            <ul class="lista-pediatras">
+                <% doctorsArray.forEach(doctor => { %>
+                    
+                    <% if (doctor.especialidad === 'pediatria') { %>
+                        <li class="li-pediatras">
+                            <img class="img-doctor" src="<%= doctor.image%>" alt="<%= doctor.nombre%>">
+                            <div>
+                                <h3><%= doctor.nombre%></h3>
+                            </div>
+                            <button class="btn-pedirTurno" type="button">Agendar Turno</button>
+                        </li>
+                    
+                    <% } %>
+
+                <%}); %>
+            </ul>
+        </section>
+
+        <section id="traumatologia">
+            <h2 class="h2-separador">Traumatología</h2>
+            <ul class="lista-traumatologos">
+                <% doctorsArray.forEach(doctor => { %>
+                    
+                    <% if (doctor.especialidad === 'traumatologia) { %>
+                        <li class="li-traumatologos">
+                            <img class="img-doctor" src="<%= doctor.image%>" alt="<%= doctor.nombre%>">
+                            <div>
+                                <h3><%= doctor.nombre%></h3>
+                            </div>
+                            <button class="btn-pedirTurno" type="button">Agendar Turno</button>
+                        </li>                    
+                    <% } %>
+                
+                <%}); %>
+            </ul>
+        </section>
+        <section id="dermatologia">
+            <h2 class="h2-separador">Dermatología</h2>
+            <ul class="lista-dermatologos">
+                <% doctorsArray.forEach(doctor => { %>
+                    
+                    <% if (doctor.especialidad === 'dermatologia') { %>
+                        <li class="li-dermatologos">
+                            <img class="img-doctor" src="<%= doctor.image%>" alt="<%= doctor.nombre%>">
+                            <div>
+                                <h3><%= doctor.nombre%></h3>
+                            </div>
+                            <button class="btn-pedirTurno" type="button">Agendar Turno</button>
+                        </li>                    
+                    <% } %>
+                
+                <%}); %>
+            </ul>
+        </section>
+    </main>
+
+    <script></script>
+
+<%- include('partialsPacientes/footer.ejs') %>
